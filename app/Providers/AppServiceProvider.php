@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->registerViews();
     }
 
     /**
@@ -24,5 +25,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+    }
+
+    function registerViews(){
+        $this->loadViewsFrom(resource_path('views/layout/admin'), 'layout-admin');
+
+        $this->loadViewsFrom(resource_path('views/layout/login'), 'layout-login');
+        $this->loadViewsFrom(resource_path('views/components/login'), 'login');
     }
 }

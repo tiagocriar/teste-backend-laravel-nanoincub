@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/ui-dashboard', function () {
+    return view('ui-dashboard');
+});
+
+Route::group(['prefix' => 'app'], function(){
+    Route::get('login', [LoginController::class, 'index'])->name('login');
+});
+
+Route::group(['prefix' => 'app/admin', 'middleware' => ['auth']], function(){
 });
