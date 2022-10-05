@@ -14,13 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/ui-dashboard', function () {
-    return view('ui-dashboard');
+Route::group(['prefix' => 'login'], function(){
+    Route::get('administrador', [LoginController::class, 'showLoginAdministrador'])->name('login.administrador');
+    Route::post('administrador', [LoginController::class, 'postLoginAdministrador'])->name('login.administrador.post');
 });
 
-Route::group(['prefix' => 'app'], function(){
-    Route::get('login', [LoginController::class, 'index'])->name('login');
-});
+Route::group(['prefix' => 'administrador', 'middleware' => ['auth:administrador']], function(){
+    Route::get('/', function () {
+        return redirect()->route('administrador.dashboard');
+    });
 
-Route::group(['prefix' => 'app/admin', 'middleware' => ['auth']], function(){
+    Route::get('/ui-dashboard', function () {
+        return view('ui-dashboard');
+    })->name('administrador.dashboard');
+
+    Route::post('administrador/logout', [LoginController::class, 'logoutAdministrador'])->name('administrador.logout');
 });
