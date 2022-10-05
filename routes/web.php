@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\Administrador\FuncionarioController as AdministradorFuncionarioController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,11 @@ Route::group(['prefix' => 'administrador', 'middleware' => ['auth:administrador'
     Route::get('/ui-dashboard', function () {
         return view('ui-dashboard');
     })->name('administrador.dashboard');
+
+    //funcionario
+    Route::get('administrador', [AdministradorFuncionarioController::class, 'index'])->name('administrador.funcionario.index');
+    Route::get('administrador/create', [AdministradorFuncionarioController::class, 'create'])->name('administrador.funcionario.create');
+    Route::post('administrador/store', [AdministradorFuncionarioController::class, 'store'])->name('administrador.funcionario.store');
 
     Route::post('administrador/logout', [LoginController::class, 'logoutAdministrador'])->name('administrador.logout');
 });

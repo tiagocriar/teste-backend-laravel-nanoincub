@@ -32,5 +32,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(resource_path('views/layout/login'), 'layout-login');
         $this->loadViewsFrom(resource_path('views/components/login'), 'login');
+
+        $this->loadViewsFrom(resource_path('views/components/administrador/funcionario'), 'administrador-funcionario');
     }
 }
