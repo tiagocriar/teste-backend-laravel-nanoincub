@@ -761,6 +761,9 @@ h6 {
 .w-9 {
   width: 2.25rem;
 }
+.w-10 {
+  width: 2.5rem;
+}
 .min-w-0 {
   min-width: 0px;
 }
