@@ -13,6 +13,7 @@
 
         <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
             <div class="flex-auto p-6">
+
                 <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">Informações de acesso</p>
                 <div class="flex flex-wrap -mx-3">
                     <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">

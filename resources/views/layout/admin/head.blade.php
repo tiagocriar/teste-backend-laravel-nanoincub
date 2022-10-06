@@ -11,5 +11,8 @@
 <link href="{{ asset('argon2') }}/assets/css/nucleo-icons.css" rel="stylesheet" />
 <link href="{{ asset('argon2') }}/assets/css/nucleo-svg.css" rel="stylesheet" />
 
+<!-- Date Picker -->
+<link rel="stylesheet" href="{{ asset('css/datapicker/app.css') }}">
+
 <!-- Main Styling -->
 <link href="{{ mix('css/tailwind.css') }}" rel="stylesheet" />

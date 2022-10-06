@@ -4,13 +4,13 @@ namespace App\Http\Controllers\Administrador;
 
 use App\Http\Controllers\Controller;
 use App\Models\Funcionario;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
 
 class FuncionarioController extends Controller
 {
@@ -20,17 +20,20 @@ class FuncionarioController extends Controller
         $this->breadcrumbs = $this->breadcrumb_init('Funcionários', route('administrador.funcionario.index'));
     }
 
-    public function index(){
-        $funcionarios = Funcionario::orderBy('id', 'ASC')->get();
+    public function index(Request $request){
+
+        $funcionarios = $this->filter($request->all());
 
         return view('administrador-funcionario::index')->with([
             'title' => 'Funcionários',
             'breadcrumbs' => $this->breadcrumbs,
-            'funcionarios' => $funcionarios
+            'funcionarios' => $funcionarios,
+            'filter_data' => $request->all()
         ]);
     }
 
     public function create(){
+
         return view('administrador-funcionario::form')->with([
             'title' => 'Novo Funcionário',
             'breadcrumbs' => $this->breadcrumb_add('Novo Funcionário', request()->url())
@@ -38,6 +41,7 @@ class FuncionarioController extends Controller
     }
 
     public function update(Request $request){
+
         $funcionario = Funcionario::findOrFail(decrypt($request->key));
 
         return view('administrador-funcionario::form')->with([
@@ -69,6 +73,25 @@ class FuncionarioController extends Controller
                 'store' => 'Não foi possível deletar funcionário. Tente novamente.'
             ])->withInput();
         }
+    }
+
+    function filter(Array $filter){
+
+        $funcionarios = Funcionario::when(isset($filter['q_nome']), function($q) use($filter){
+            $q->where('nome_completo', 'like', "%{$filter['q_nome']}%");
+        })
+        ->when(isset($filter['start']), function($q) use($filter){
+            $start = Carbon::createFromFormat('d/m/Y', $filter['start'])->startOfDay();
+            $q->where('data_criacao', '>=', $start);
+        })
+        ->when(isset($filter['end']), function($q) use($filter){
+            $end = Carbon::createFromFormat('d/m/Y', $filter['end'])->endOfDay();
+            $q->where('data_criacao', '<=', $end);
+        })
+        ->orderBy('id', 'ASC')
+        ->get();
+
+        return $funcionarios;
     }
 
     public function store(Request $request){
