@@ -13,16 +13,14 @@
     <main class="relative h-full max-h-screen transition-all duration-200 ease-in-out xl:ml-68 rounded-xl">
         @include('layout-admin::navbar.master')
 
-
         <div class="w-full px-6 py-6 mx-auto">
-
             <div class="flex flex-wrap -mx-3">
                 <div class="flex-none w-full max-w-full px-3">
                     @yield('main-content')
                 </div>
             </div>
-
         </div>
+
     </main>
 </body>
 

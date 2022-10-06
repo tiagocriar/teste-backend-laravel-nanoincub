@@ -1,4 +1,4 @@
-@if (isset($breadcrumbs))
+@if (isset($breadcrumbs) && count($breadcrumbs) > 1)
     <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
         @foreach ($breadcrumbs as $breadcrumb)
             @if($loop->last)

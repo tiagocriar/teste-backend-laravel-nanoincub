@@ -16,11 +16,17 @@ class FuncionarioController extends Controller
 
     function __construct()
     {
-        $this->breadcrumbs = $this->breadcrumb_init('Funcionário', route('administrador.funcionario.index'));
+        $this->breadcrumbs = $this->breadcrumb_init('Funcionários', route('administrador.funcionario.index'));
     }
 
     public function index(){
-        return view('administrador-funcionario::index');
+        $funcionarios = Funcionario::orderBy('id', 'DESC')->get();
+
+        return view('administrador-funcionario::index')->with([
+            'title' => 'Funcionários',
+            'breadcrumbs' => $this->breadcrumbs,
+            'funcionarios' => $funcionarios
+        ]);
     }
 
     public function create(){

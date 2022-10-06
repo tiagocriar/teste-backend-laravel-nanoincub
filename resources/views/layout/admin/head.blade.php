@@ -12,4 +12,4 @@
 <link href="{{ asset('argon2') }}/assets/css/nucleo-svg.css" rel="stylesheet" />
 
 <!-- Main Styling -->
-<link href="{{ asset('css/tailwind.css') }}" rel="stylesheet" />
+<link href="{{ mix('css/tailwind.css') }}" rel="stylesheet" />

@@ -3,7 +3,7 @@
 
 <form method="POST" action="{{ route('administrador.funcionario.store') }}">
     @csrf
-    <div class="w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-0">
+    <div class="w-full max-w-full shrink-0 md:w-8/12 md:flex-0">
 
         @error('store')
             <div class="relative w-full p-4 text-white bg-red-600 rounded-lg">{{ $message }}</div>
