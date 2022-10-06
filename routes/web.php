@@ -30,9 +30,10 @@ Route::group(['prefix' => 'administrador', 'middleware' => ['auth:administrador'
     })->name('administrador.dashboard');
 
     //funcionario
-    Route::get('administrador', [AdministradorFuncionarioController::class, 'index'])->name('administrador.funcionario.index');
-    Route::get('administrador/create', [AdministradorFuncionarioController::class, 'create'])->name('administrador.funcionario.create');
-    Route::post('administrador/store', [AdministradorFuncionarioController::class, 'store'])->name('administrador.funcionario.store');
+    Route::get('funcionario', [AdministradorFuncionarioController::class, 'index'])->name('administrador.funcionario.index');
+    Route::get('funcionario/criar', [AdministradorFuncionarioController::class, 'create'])->name('administrador.funcionario.create');
+    Route::get('funcionario/editar', [AdministradorFuncionarioController::class, 'update'])->name('administrador.funcionario.update');
+    Route::post('funcionario/salvar', [AdministradorFuncionarioController::class, 'store'])->name('administrador.funcionario.store');
 
     Route::post('administrador/logout', [LoginController::class, 'logoutAdministrador'])->name('administrador.logout');
 });

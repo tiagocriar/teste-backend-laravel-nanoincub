@@ -4,9 +4,9 @@
     <ul dropdown-menu class="z-10 text-sm lg:shadow-3xl duration-250 before:duration-350 before:font-awesome before:ease min-w-44 before:text-5.5 transform-dropdown pointer-events-none absolute md:left-auto -left-30 top-[5px] m-0 -mr-4 list-none rounded-lg border-0 border-solid border-transparent bg-white dark:bg-slate-800 bg-clip-padding px-0 py-2 text-left text-slate-500 opacity-0 transition-all before:absolute before:right-7 before:left-auto before:top-0 before:z-40 before:text-white before:transition-all">
       <li>
         <a class="py-1.2 lg:ease clear-both block w-full whitespace-nowrap border-0 bg-transparent px-4 text-left font-normal text-slate-500 hover:bg-gray-200 hover:text-slate-700 dark:text-white dark:hover:bg-slate-850 lg:transition-colors lg:duration-300"
-            href="javascript:;"
+            href="{{ route('administrador.funcionario.update', ['key' => encrypt($funcionario->id)]) }}"
         >
-            Action
+            <i class="far fa-edit"></i> Editar
         </a>
       </li>
     </ul>
