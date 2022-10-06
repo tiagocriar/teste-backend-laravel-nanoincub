@@ -14,6 +14,10 @@
 
             @include('administrador-funcionario::index-content.desktop')
             @include('administrador-funcionario::index-content.mobile')
+
+            <div class="px-3">
+                {{ $funcionarios->appends($filter_data ?? [])->links('pagination::tailwind') }}
+            </div>
         </div>
     </div>
 @endsection

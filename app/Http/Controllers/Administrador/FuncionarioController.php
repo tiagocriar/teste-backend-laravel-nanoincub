@@ -89,7 +89,7 @@ class FuncionarioController extends Controller
             $q->where('data_criacao', '<=', $end);
         })
         ->orderBy('id', 'ASC')
-        ->get();
+        ->paginate(2);
 
         return $funcionarios;
     }
