@@ -19,7 +19,9 @@
                 </div>
             </li>
         @empty
-
+            <li class="relative flex p-6 mb-2 border-0 rounded-t-inherit rounded-xl bg-gray-50 dark:bg-slate-900">
+                Nenhum funcionário encontrado.
+            </li>
         @endforelse
     </ul>
 </div>
