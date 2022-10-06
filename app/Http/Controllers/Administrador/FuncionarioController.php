@@ -21,7 +21,7 @@ class FuncionarioController extends Controller
     }
 
     public function index(){
-        $funcionarios = Funcionario::orderBy('id', 'DESC')->get();
+        $funcionarios = Funcionario::orderBy('id', 'ASC')->get();
 
         return view('administrador-funcionario::index')->with([
             'title' => 'Funcionários',
@@ -46,6 +46,29 @@ class FuncionarioController extends Controller
             'funcionario' => $funcionario,
             'action' => 'update'
         ]);
+    }
+
+    public function delete(Request $request){
+        $funcionario = Funcionario::findOrFail(decrypt($request->key));
+
+        try {
+            DB::beginTransaction();
+
+            $funcionario->delete();
+
+            DB::commit();
+
+            return redirect()->route('administrador.funcionario.index')->with([
+                'success' => 'Funcionário deletado com sucesso!'
+            ]);
+        } catch (Exception $e) {
+            Log::error($e);
+            DB::rollBack();
+
+            return redirect()->back()->withErrors([
+                'store' => 'Não foi possível deletar funcionário. Tente novamente.'
+            ])->withInput();
+        }
     }
 
     public function store(Request $request){

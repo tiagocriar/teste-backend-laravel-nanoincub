@@ -34,6 +34,7 @@ Route::group(['prefix' => 'administrador', 'middleware' => ['auth:administrador'
     Route::get('funcionario/criar', [AdministradorFuncionarioController::class, 'create'])->name('administrador.funcionario.create');
     Route::get('funcionario/editar', [AdministradorFuncionarioController::class, 'update'])->name('administrador.funcionario.update');
     Route::post('funcionario/salvar', [AdministradorFuncionarioController::class, 'store'])->name('administrador.funcionario.store');
+    Route::delete('funcionario/deletar', [AdministradorFuncionarioController::class, 'delete'])->name('administrador.funcionario.delete');
 
     Route::post('administrador/logout', [LoginController::class, 'logoutAdministrador'])->name('administrador.logout');
 });

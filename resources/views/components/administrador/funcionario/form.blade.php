@@ -1,13 +1,14 @@
 @extends('layout-admin::master')
 @section('main-content')
 
-<form method="POST" action="{{ route('administrador.funcionario.store', ['key' => encrypt($funcionario->id)]) }}">
+<form method="POST" action="{{ (isset($action) && $action === 'update' ? route('administrador.funcionario.store', ['key' => encrypt($funcionario->id)]) : route('administrador.funcionario.store')) }}">
     @csrf
     <input type="hidden" name="id_funcionario" value="{{ isset($funcionario->id) ? encrypt($funcionario->id) : null }}">
+
     <div class="w-full max-w-full shrink-0 md:w-8/12 md:flex-0">
 
         @error('store')
-            <div class="relative w-full p-4 text-white bg-red-600 rounded-lg">{{ $message }}</div>
+            <div class="relative w-full p-4 text-white bg-red-600 rounded-lg mb-5">{{ $message }}</div>
         @enderror
 
         <div class="relative flex flex-col min-w-0 break-words bg-white border-0 shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">

@@ -9,5 +9,18 @@
             <i class="far fa-edit"></i> Editar
         </a>
       </li>
+
+      <li>
+        <form action="{{ route('administrador.funcionario.delete', ['key' => encrypt($funcionario->id)]) }}" method="POST">
+            @csrf
+            @method('DELETE')
+
+            <button onclick="return confirm('Tem certeza que deseja deletar?')" class="py-1.2 lg:ease clear-both block w-full whitespace-nowrap border-0 bg-transparent px-4 text-left font-normal text-slate-500 hover:bg-gray-200 hover:text-slate-700 dark:text-white dark:hover:bg-slate-850 lg:transition-colors lg:duration-300"
+                href="{{ route('administrador.funcionario.update', ['key' => encrypt($funcionario->id)]) }}"
+            >
+                <i class="fas fa-trash"></i> Deletar
+            </button>
+        </form>
+      </li>
     </ul>
 </div>
