@@ -14,6 +14,9 @@ import { DateRangePicker, Datepicker } from 'vanillajs-datepicker';
 window.Datepicker = Datepicker;
 window.DateRangePicker = DateRangePicker;
 
+import IMask from 'imask';
+window.IMask = IMask;
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

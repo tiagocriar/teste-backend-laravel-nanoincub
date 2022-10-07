@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        date_default_timezone_set('America/Sao_Paulo');
     }
 
     function registerViews(){
@@ -34,5 +34,6 @@ class AppServiceProvider extends ServiceProvider
         $this->loadViewsFrom(resource_path('views/components/login'), 'login');
 
         $this->loadViewsFrom(resource_path('views/components/administrador/funcionario'), 'administrador-funcionario');
+        $this->loadViewsFrom(resource_path('views/components/administrador/movimentacao'), 'administrador-movimentacao');
     }
 }

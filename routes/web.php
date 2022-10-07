@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Administrador\FuncionarioController as AdministradorFuncionarioController;
+use App\Http\Controllers\Movimentacao\MovimentacaoController as AdministradorMovimentacaoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 
@@ -35,6 +36,12 @@ Route::group(['prefix' => 'administrador', 'middleware' => ['auth:administrador'
     Route::get('funcionario/editar', [AdministradorFuncionarioController::class, 'update'])->name('administrador.funcionario.update');
     Route::post('funcionario/salvar', [AdministradorFuncionarioController::class, 'store'])->name('administrador.funcionario.store');
     Route::delete('funcionario/deletar', [AdministradorFuncionarioController::class, 'delete'])->name('administrador.funcionario.delete');
+
+    //movimentacao
+    Route::get('movimentacao', [AdministradorMovimentacaoController::class, 'index'])->name('administrador.movimentacao.index');
+    Route::get('movimentacao/criar', [AdministradorMovimentacaoController::class, 'create'])->name('administrador.movimentacao.create');
+    Route::post('movimentacao/get-funcionarios', [AdministradorMovimentacaoController::class, 'getFuncionarios'])->name('administrador.movimentacao.getFuncionarios');
+    Route::post('movimentacao/salvar', [AdministradorMovimentacaoController::class, 'store'])->name('administrador.movimentacao.store');
 
     Route::post('administrador/logout', [LoginController::class, 'logoutAdministrador'])->name('administrador.logout');
 });
