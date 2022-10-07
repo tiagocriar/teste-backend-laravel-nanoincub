@@ -10,14 +10,14 @@
 
     <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-xl bg-clip-border">
         <div class="flex-auto px-0 pt-0 pb-2">
-            {{-- @include('administrador-movimentacao::index-content.search') --}}
+            @include('administrador-movimentacao::index-content.search')
 
             @include('administrador-movimentacao::index-content.desktop')
             @include('administrador-movimentacao::index-content.mobile')
 
-            {{-- <div class="px-3">
+            <div class="px-3">
                 {{ $movimentacoes->appends($filter_data ?? [])->links('pagination::tailwind') }}
-            </div> --}}
+            </div>
         </div>
     </div>
 @endsection

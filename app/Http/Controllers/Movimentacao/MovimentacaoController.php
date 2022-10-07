@@ -21,13 +21,14 @@ class MovimentacaoController extends Controller
         $this->breadcrumbs = $this->breadcrumb_init('Movimentações', route('administrador.movimentacao.index'));
     }
 
-    public function index(){
-        $movimentacoes = Movimentacao::orderBy('id', 'DESC')->get();
+    public function index(Request $request){
+        $movimentacoes = $this->filter($request->all());
 
         return view('administrador-movimentacao::index')->with([
             'title' => 'Movimentações',
             'breadcrumbs' => $this->breadcrumbs,
-            'movimentacoes' => $movimentacoes
+            'movimentacoes' => $movimentacoes,
+            'filter_data' => $request->all()
         ]);
     }
 
@@ -71,6 +72,32 @@ class MovimentacaoController extends Controller
                 'store' => 'Não foi possível deletar funcionário. Tente novamente.'
             ])->withInput();
         }
+    }
+
+    function filter(Array $filter){
+
+        $movimentacoes = Movimentacao::join('funcionario', 'funcionario.id', 'movimentacao.funcionario_id')
+        ->when(isset($filter['q_nome_funcionario']), function($q) use($filter){
+            $q->where('funcionario.nome_completo', 'like', "%{$filter['q_nome_funcionario']}%");
+        })
+        ->when(isset($filter['tipo_movimentacao']), function($q) use($filter){
+            $q->where('movimentacao.tipo_movimentacao', $filter['tipo_movimentacao']);
+        })
+        ->when(isset($filter['start']), function($q) use($filter){
+            $start = Carbon::createFromFormat('d/m/Y', $filter['start'])->startOfDay();
+            $q->where('movimentacao.data_criacao', '>=', $start);
+        })
+        ->when(isset($filter['end']), function($q) use($filter){
+            $end = Carbon::createFromFormat('d/m/Y', $filter['end'])->endOfDay();
+            $q->where('movimentacao.data_criacao', '<=', $end);
+        })
+        ->select(
+            'movimentacao.*'
+        )
+        ->orderBy('id', 'DESC')
+        ->paginate(20);
+
+        return $movimentacoes;
     }
 
     public function getFuncionarios(Request $request){
