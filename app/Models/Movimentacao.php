@@ -18,6 +18,14 @@ class Movimentacao extends Model
         'data_criacao',
     ];
 
+    protected static function boot() {
+        parent::boot();
+
+        static::created(function($movimentacao) {
+            Funcionario::updateSaldoAtual($movimentacao);
+        });
+    }
+
     public function funcionario(){
         return $this->hasOne(Funcionario::class, 'id', 'funcionario_id');
     }

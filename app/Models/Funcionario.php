@@ -23,4 +23,21 @@ class Funcionario extends Authenticatable
         'senha'
     ];
 
+    public static function updateSaldoAtual(Movimentacao $movimentacao){
+        $changes = false;
+        $funcionario = Funcionario::findOrFail($movimentacao->funcionario_id);
+
+        if($movimentacao->tipo_movimentacao === 'entrada'){
+            $funcionario->saldo_atual = $funcionario->saldo_atual + $movimentacao->valor;
+            $changes = true;
+        }elseif($movimentacao->tipo_movimentacao === 'saida'){
+            $funcionario->saldo_atual = $funcionario->saldo_atual - $movimentacao->valor;
+            $changes = true;
+        }
+
+        if($changes){
+            $funcionario->save();
+        }
+    }
+
 }
