@@ -23,12 +23,8 @@ Route::group(['prefix' => 'login'], function(){
 
 Route::group(['prefix' => 'administrador', 'middleware' => ['auth:administrador']], function(){
     Route::get('/', function () {
-        return redirect()->route('administrador.dashboard');
-    });
-
-    Route::get('/ui-dashboard', function () {
-        return view('ui-dashboard');
-    })->name('administrador.dashboard');
+        return redirect()->route('administrador.funcionario.index');
+    })->name('administrador.index');
 
     //funcionario
     Route::get('funcionario', [AdministradorFuncionarioController::class, 'index'])->name('administrador.funcionario.index');
