@@ -16,6 +16,10 @@ use App\Http\Controllers\LoginController;
 |
 */
 
+Route::get('/', function () {
+    return redirect()->route('administrador.index');
+});
+
 Route::group(['prefix' => 'login'], function(){
     Route::get('administrador', [LoginController::class, 'showLoginAdministrador'])->name('login.administrador');
     Route::post('administrador', [LoginController::class, 'postLoginAdministrador'])->name('login.administrador.post');

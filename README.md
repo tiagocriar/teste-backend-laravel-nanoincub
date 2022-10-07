@@ -116,14 +116,21 @@ data_criacao:       datetime
 * Clone o repositório: <br />
 `git clone https://github.com/tiagocriar/teste-backend-laravel-nanoincub.git`
 * Entre na pasta criada pelo git
-* Crie um arquivo .env e configure as variaveis de ambiente, use de exemplo o arquivo `.env.example`
+* Crie um arquivo .env e configure as variaveis de ambiente e de banco de dados, use de exemplo o arquivo `.env.example`
 * Instale as dependencias do projeto PHP: `composer install`
-* Instale as dependencias node: `npm install`
-* Gera arquivos node: `npm run production`
+* Gere a chave laravel `php artisan key:generate`
 * Rode as migrations `php artisan migrate`
-* Rode os sedeers `php db:seed`
+* Rode os sedeers `php artisan db:seed`
+* Instale as dependencias node: `npm install`
+* Gera arquivos node: `npm run dev`
 
 ## Úteis
+
+### Acesso administrador padrão
+```plain
+login: admin
+senha: changeme
+```
 
 ### Comandos artisan para administradores
 * Criar Administrador `php artisan administrador:criar`
