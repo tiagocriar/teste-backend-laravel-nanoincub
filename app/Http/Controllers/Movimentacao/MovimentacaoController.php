@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class MovimentacaoController extends Controller
 {
@@ -35,6 +36,12 @@ class MovimentacaoController extends Controller
     }
 
     public function store(Request $request){
+
+        $validator = $this->validateForm($request->all());
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         try {
             DB::beginTransaction();
@@ -93,5 +100,26 @@ class MovimentacaoController extends Controller
                 'Não foi possível processar requisição.'
             ], 400);
         }
+    }
+
+    function validateForm(Array $fields){
+
+        $rules = [
+            'funcionario_id' => 'required|numeric',
+            'tipo_movimentacao' => 'required',
+            'valor' => 'required',
+            'observacao' => 'required'
+        ];
+
+        $messages = [
+            'required' => 'Campo :attribute é obrigatório.',
+            'unique' => 'Usuário :input já está cadastrado, por favor, utilize outro.',
+            'min' => 'Campo :attribute precisa ser maior que :min.',
+            'gte' => 'Campo :attribute precisa ser igual ou maior que :gte.'
+        ];
+
+        $validator = Validator::make($fields, $rules, $messages);
+
+        return $validator;
     }
 }

@@ -170,7 +170,6 @@
         function selectFuncionario(e){
             const id = e.dataset.id;
             const nome_completo = e.dataset.nome_completo;
-            console.log(nome_completo);
 
             document.getElementById('funcionario_id').value = id;
             document.getElementById('nome_funcionario_selected').innerHTML = nome_completo;
