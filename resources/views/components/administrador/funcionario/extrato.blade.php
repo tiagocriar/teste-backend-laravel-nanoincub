@@ -22,7 +22,7 @@
                     <li class="relative flex justify-between py-2 pl-0 mb-2 border-0 rounded-t-inherit text-inherit rounded-xl">
                         <div class="flex items-center">
                             @if($movimentacao->tipo_movimentacao === 'entrada')
-                                <button class="leading-pro ease-in text-xs bg-150 w-6.5 h-6.5 p-1.2 rounded-3.5xl tracking-tight-rem bg-x-25 mr-4 mb-0 flex cursor-pointer items-center justify-center border border-solid border-emerald-500 border-transparent bg-transparent text-center align-middle font-bold uppercase text-emerald-500 transition-all hover:opacity-75"><i class="fas fa-arrow-up text-3xs" aria-hidden="true"></i></button>
+                                <button class="leading-pro ease-in text-xs bg-150 w-6.5 h-6.5 p-1.2 rounded-3.5xl tracking-tight-rem bg-x-25 mr-4 mb-0 flex cursor-pointer items-center justify-center border border-solid border-green-600 border-transparent bg-transparent text-center align-middle font-bold uppercase text-green-600 transition-all hover:opacity-75"><i class="fas fa-arrow-up text-3xs" aria-hidden="true"></i></button>
                             @elseif($movimentacao->tipo_movimentacao === 'saida')
                                 <button class="leading-pro ease-in text-xs bg-150 w-6.5 h-6.5 p-1.2 rounded-3.5xl tracking-tight-rem bg-x-25 mr-4 mb-0 flex cursor-pointer items-center justify-center border border-solid border-red-600 border-transparent bg-transparent text-center align-middle font-bold uppercase text-red-600 transition-all hover:opacity-75"><i class="fas fa-arrow-down text-3xs" aria-hidden="true"></i></button>
                             @endif
