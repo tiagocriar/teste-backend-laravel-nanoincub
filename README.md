@@ -125,7 +125,12 @@ data_criacao:       datetime
 
 ## Úteis
 
-#### Namespace views
+### Comandos artisan para administradores
+* Criar Administrador `php artisan administrador:criar`
+* Excluir Administrador `php artisan administrador:excluir`
+* Mudar senha de Administrador `php artisan administrador:mudar-senha`
+
+### Namespace views
 * layout-admin `views/layout/admin`
 * layout-login `views/layout/login`
 * login `views/components/login`

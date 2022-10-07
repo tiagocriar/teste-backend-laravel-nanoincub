@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html class="dark">
   <head>
     @include('layout-admin::head')
   </head>
 
-  <body class="m-0 font-sans antialiased font-normal bg-white text-start text-base leading-default text-slate-500">
+  <body class="m-0 font-sans antialiased font-normal bg-slate-900 text-start text-base leading-default text-gray-400">
     <main class="mt-0 transition-all duration-200 ease-in-out">
       <section>
         <div class="relative flex items-center min-h-screen p-0 overflow-hidden bg-center bg-cover">
@@ -17,7 +17,7 @@
               </div>
               <div class="absolute top-0 right-0 flex-col justify-center hidden w-6/12 h-full max-w-full px-3 pr-0 my-auto text-center flex-0 lg:flex">
                 <div style="background-image: url('{{ asset('img/login/img-side.jpg') }}')" class="relative flex flex-col justify-center h-full bg-cover px-24 m-4 overflow-hidden rounded-xl ">
-                  <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-blue-500 to-violet-500 opacity-60"></span>
+                  <span class="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-black to-red-500 opacity-50"></span>
                   <h4 class="z-20 font-bold text-white">"Crescendo em comunidade"</h4>
                   <p class="z-20 text-white "><b>Bônus Incub!</b> Nossa plataforma de crescimento e sucesso compartilhado.</p>
                 </div>
