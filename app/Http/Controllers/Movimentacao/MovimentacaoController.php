@@ -22,9 +22,12 @@ class MovimentacaoController extends Controller
     }
 
     public function index(){
+        $movimentacoes = Movimentacao::orderBy('id', 'DESC')->get();
+
         return view('administrador-movimentacao::index')->with([
             'title' => 'Movimentações',
             'breadcrumbs' => $this->breadcrumbs,
+            'movimentacoes' => $movimentacoes
         ]);
     }
 

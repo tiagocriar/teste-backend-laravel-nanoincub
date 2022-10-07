@@ -18,4 +18,8 @@ class Movimentacao extends Model
         'data_criacao',
     ];
 
+    public function funcionario(){
+        return $this->hasOne(Funcionario::class, 'id', 'funcionario_id');
+    }
+
 }
