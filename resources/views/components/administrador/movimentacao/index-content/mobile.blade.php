@@ -25,7 +25,7 @@
                     </span>
                 </div>
                 <div class="ml-auto text-right w-full">
-                    {{-- @include('administrador-movimentacao::index-content.options-dropdown', ['movimentacao' => $movimentacao]) --}}
+                    @include('administrador-movimentacao::index-content.options-dropdown', ['movimentacao' => $movimentacao])
                 </div>
             </li>
         @empty

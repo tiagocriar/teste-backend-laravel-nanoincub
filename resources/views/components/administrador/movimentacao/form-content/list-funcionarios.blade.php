@@ -7,6 +7,9 @@
                     <span class="mb-2 text-xs leading-tight dark:text-white/80">ID:
                         <span class="font-semibold text-slate-700 dark:text-white sm:ml-2">{{ $funcionario->id }}</span>
                     </span>
+                    <span class="mb-2 text-xs leading-tight dark:text-white/80">Saldo atual:
+                        <span class="font-semibold text-slate-700 dark:text-white sm:ml-2">{{ number_format($funcionario->saldo_atual, 2, ',', '.') }}</span>
+                    </span>
                 </div>
                 <div class="ml-auto text-right">
                     <button type="button"

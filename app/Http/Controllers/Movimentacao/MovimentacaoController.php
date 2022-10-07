@@ -110,7 +110,7 @@ class MovimentacaoController extends Controller
         }
 
         try {
-            $funcionarios = Funcionario::select('id', 'nome_completo')
+            $funcionarios = Funcionario::select('id', 'nome_completo', 'saldo_atual')
             ->where('nome_completo', 'like', "%{$request->q_nome}%")
             ->limit(10)
             ->get();

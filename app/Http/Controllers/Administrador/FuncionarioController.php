@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Administrador;
 
 use App\Http\Controllers\Controller;
 use App\Models\Funcionario;
+use App\Models\Movimentacao;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -29,6 +30,18 @@ class FuncionarioController extends Controller
             'breadcrumbs' => $this->breadcrumbs,
             'funcionarios' => $funcionarios,
             'filter_data' => $request->all()
+        ]);
+    }
+
+    public function extrato(Request $request){
+        $funcionario = Funcionario::findOrFail(decrypt($request->key));
+        $movimentacoes = Movimentacao::where('funcionario_id', $funcionario->id)->orderBy('id', 'DESC')->get();
+
+        return view('administrador-funcionario::extrato')->with([
+            'funcionario' => $funcionario,
+            'movimentacoes' => $movimentacoes,
+            'title' => 'Extrato Funcionário',
+            'breadcrumbs' => $this->breadcrumb_add('Extrato Funcionário', request()->url()),
         ]);
     }
 
